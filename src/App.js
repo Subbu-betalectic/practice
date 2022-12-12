@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider, theme } from "@reusejs/react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import "./App.css";
+import Home from "./Home";
+import AddFavoritePackage from "./Components/AddFavoritePackage";
+import newTheme from "./Components/variants";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider value={newTheme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route
+            path="/addFavoritePackage"
+            element={<AddFavoritePackage />}
+          ></Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
